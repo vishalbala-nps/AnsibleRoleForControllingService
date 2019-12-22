@@ -1,0 +1,16 @@
+- hosts: fedora
+  remote_user: [INSERT_USERNAME_HERE]
+  become: yes
+  become_user: root
+
+  vars_prompt:
+    - name: service_name
+      prompt: Enter the service name
+      private: no
+
+    - name: service_action
+      prompt: Enter the service action [1. Start, 2. Stop, 3. Restart]
+      private: no
+
+  roles:
+    - service_controller
